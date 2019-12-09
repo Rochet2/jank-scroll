@@ -6,7 +6,7 @@
 
 .cat-tile {
   /* background-color: grey; */
-  height: 100px;
+  height: 70px;
   width: 100%;
 }
 
@@ -18,8 +18,8 @@ li {
 img, test {
   /* background-color: grey; */
   margin: 0px 2.5px;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
 }
 
 /* Hide scrollbar */

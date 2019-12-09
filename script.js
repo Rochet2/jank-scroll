@@ -17,7 +17,7 @@ const initList = num => {
         tile.setAttribute("class", "cat-tile");
         tile.setAttribute("id", "cat-tile-" + i);
         // console.log(i)
-        for (let k = 0; k < 4; k++) {
+        for (let k = 0; k < 3; k++) {
             const img = document.createElement("IMG"); // ("IMG");
             const t = document.createTextNode(`[${i} ${k}]`);
             img.appendChild(t);

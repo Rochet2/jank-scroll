@@ -20,10 +20,10 @@ li {
 
 img, test {
   /* background-color: grey; */
-  padding: 0px 2px;
+  padding: 3px 5px;
   margin: 0;
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
 }
 
 /* Hide scrollbar */

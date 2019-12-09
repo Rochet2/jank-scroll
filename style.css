@@ -1,6 +1,6 @@
 .cat-list {
-  /* overflow: scroll; */
-  /* list-style-type: none; */
+  overflow: scroll;
+  list-style-type: none;
   padding: 0;
 }
 
@@ -15,11 +15,11 @@ li {
   margin: 5px 0px;
 }
 
-img {
+img, test {
   /* background-color: grey; */
   margin: 0px 2.5px;
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
 }
 
 /* Hide scrollbar */

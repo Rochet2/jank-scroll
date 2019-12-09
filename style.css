@@ -6,20 +6,24 @@
 
 .cat-tile {
   /* background-color: grey; */
-  height: 70px;
+  /* height: 100px; */
   width: 100%;
 }
 
 /* MARGINS */
 li {
-  margin: 5px 0px;
+  /* margin: 5px 0px; */
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 img, test {
   /* background-color: grey; */
-  margin: 0px 2.5px;
-  height: 70px;
-  width: 70px;
+  padding: 2.5px 5px;
+  margin: 0;
+  height: 100px;
+  width: 100px;
 }
 
 /* Hide scrollbar */

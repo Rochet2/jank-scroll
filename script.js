@@ -17,7 +17,7 @@ const initList = num => {
         tile.setAttribute("class", "cat-tile");
         tile.setAttribute("id", "cat-tile-" + i);
         // console.log(i)
-        for (let k = 0; k < 5; k++) {
+        for (let k = 0; k < 4; k++) {
             const img = document.createElement("IMG"); // ("IMG");
             const t = document.createTextNode(`[${i} ${k}]`);
             img.appendChild(t);
@@ -237,3 +237,6 @@ const start = () => {
     initList(listSize);
     initIntersectionObserver();
 }
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  }

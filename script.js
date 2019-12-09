@@ -75,11 +75,12 @@ const throttle = (func, limit) => {
     }
 }
 
-let sanic = false
+let sanic = 0
 
 const inAdvance = 600
 function lazyload() {
-    if (sanic)
+    console.log('sanic', sanic)
+    if (sanic != 0)
         return;
     // console.log("WAT")
     elements.forEach(tile => {
@@ -129,14 +130,18 @@ var checkScrollSpeed = (function(settings){
     };
 })();
 
+setInterval(() => {
+    if (sanic > 0) {
+        --sanic;
+    }
+}, 10)
+
 // listen to "scroll" event
 window.onscroll = function(){
     const speed = checkScrollSpeed();
-    if (Math.abs(speed) >= 75) {
+    if (Math.abs(speed) >= 120) {
         // cancel stuff
-        sanic = true;
-    } else {
-        sanic = false;
+        sanic = 5;
     }
 };
 

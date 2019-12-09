@@ -10,6 +10,7 @@
   width: 100%;
 }
 
+/* MARGINS */
 li {
   margin: 5px 0px;
 }
@@ -20,6 +21,8 @@ img {
   height: 100px;
   width: 100px;
 }
+
+/* Hide scrollbar */
 
 html {
     overflow-y: scroll;

@@ -16,24 +16,7 @@ let topSentinelPreviousRatio = 0;
 let bottomSentinelPreviousY = 0;
 let bottomSentinelPreviousRatio = 0;
 
-let listSize = 200;
-let DBSize = 2000;
-
-const initDB = num => {
-    const db = [];
-    for (let i = 0; i < num; i++) {
-        db.push({
-            catCounter: i,
-            title: `cat image number ${i}`,
-            imgSrc: _getCatImg()
-        })
-    }
-    return db;
-}
-
-let DB = [];
-
-let newdb = [];
+let listSize = 20;
 
 let currentIndex = 0;
 
@@ -44,17 +27,12 @@ const initList = num => {
         const tile = document.createElement("LI");
         tile.setAttribute("class", "cat-tile");
         tile.setAttribute("id", "cat-tile-" + i);
-        const title = document.createElement("H3");
-        const t = document.createTextNode(DB[i].title);
-        title.appendChild(t);
-        // tile.appendChild(title);
+        console.log(i)
         for ( let k = 0; k< 5; k++) {
             const img = document.createElement("IMG");
             img.setAttribute("src", `https://picsum.photos/id/${(i*10+k)%1000}/100/100`); // DB[i].imgSrc);
             tile.appendChild(img);
         }
-        // img.setAttribute("class", "cat-tile");
-        // img.setAttribute("id", "cat-tile-" + i);
         container.appendChild(tile);
     }
 
@@ -74,14 +52,18 @@ const getSlidingWindow = isScrollDown => {
         firstIndex = 0;
     }
 
+    console.log("firstIndex", firstIndex)
+
     return firstIndex;
 }
 
 const recycleDOM = firstIndex => {
     for (let i = 0; i < listSize; i++) {
         const tile = document.querySelector("#cat-tile-" + i);
-        // tile.firstElementChild.innerText = DB[i + firstIndex].title;
-        tile.setAttribute("src", DB[i + firstIndex].imgSrc);
+        console.log("recycling dom", i + firstIndex, tile.children.length)
+        for ( let k = 0; k< tile.children.length; k++) {
+            tile.children[k].setAttribute("src", `https://picsum.photos/id/${(((i + firstIndex)*10)+k)%1000}/100/100`);
+        }
     }
 }
 
@@ -131,9 +113,10 @@ const topSentCallback = entry => {
 }
 
 const botSentCallback = entry => {
-    if (currentIndex === DBSize - listSize) {
-        return;
-    }
+    console.log("currentindex", currentIndex, listSize)
+    // if (currentIndex === DBSize - listSize) {
+    //     return; // actual bottom of list
+    // }
     const currentY = entry.boundingClientRect.top;
     const currentRatio = entry.intersectionRatio;
     const isIntersecting = entry.isIntersecting;
@@ -144,6 +127,7 @@ const botSentCallback = entry => {
         currentRatio > bottomSentinelPreviousRatio &&
         isIntersecting
     ) {
+        console.log("sliding?")
         const firstIndex = getSlidingWindow(true);
         adjustPaddings(true);
         recycleDOM(firstIndex);
@@ -177,27 +161,7 @@ const initIntersectionObserver = () => {
 }
 
 const start = () => {
-    //   const input1 = document.querySelector("#input1");
-    // const input2 = document.querySelector("#input2");
-    // if (!input1 || !input1.value) {
-    //     DBSize = 200;
-    //   // input1.value = DBSize;
-    // } else {
-    //     DBSize = input1.value;
-    // }
-
-    // if (input2.value < 20) {
-    //     listSize = 20;
-    //   input2.value = 20;
-    // } else {
-    //     listSize = input2.value;
-    // }
-    DB = initDB(DBSize);
     initList(listSize);
     initIntersectionObserver();
-
-    input1.style.display = "none";
-    input2.style.display = "none";
-    document.querySelector("#start-btn").style.display = "none";
 }
 
